@@ -387,36 +387,39 @@
 
       <!-- ============================================-->
       <!-- <section> begin ============================-->
-      <section>
-        <div class="bg-holder overlay overlay-elixir" style="background-image:url(images/background-15.jpg);"></div>
-        <!--/.bg-holder-->
-        <div class="container">
-          <div class="d-flex"><span class="me-3"> <img src="images/checkmark.png" alt="checkmark" style="width: 55px"></span>
-            <div class="flex-1">
-              <h2 class="text-warning fs-3 fs-lg-4">Take the right step,<br><span class="text-white">do the big things.</span></h2>
-              <div class="row mt-4 pe-lg-10">
-                <div class="overflow-hidden col-md-3" data-zanim-timeline="{}" data-zanim-trigger="scroll">
-                  <div class="fs-3 fs-lg-4 mb-0 fw-bold text-white mt-lg-5 mt-3 lh-xs" data-zanim-xs="{" delay":0.1}"="" data-countup="{" endvalue":52}"="">15263</div>
-                  <h6 class="fs-0 text-white" data-zanim-xs="{" delay":0.2}"="">No of Loans </h6>
-                </div>
-                <div class="overflow-hidden col col-lg-3" data-zanim-timeline="{}" data-zanim-trigger="scroll">
-                  <div class="fs-3 fs-lg-4 mb-0 fw-bold text-white mt-lg-5 mt-3 lh-xs" data-zanim-xs="{" delay":0.1}"="" data-countup="{" endvalue":164}"="">4</div>
-                  <h6 class="fs-0 text-white" data-zanim-xs="{" delay":0.2}"="">No of years</h6>
-                </div>
-                <div class="w-100 d-flex d-lg-none"></div>
-                <div class="overflow-hidden col-md-3" data-zanim-timeline="{}" data-zanim-trigger="scroll">
-                  <div class="fs-3 fs-lg-4 mb-0 fw-bold text-white mt-lg-5 mt-3 lh-xs" data-zanim-xs="{" delay":0.1}"="" data-countup="{" endvalue":38}"="">1</div>
-                  <h6 class="fs-0 text-white" data-zanim-xs="{" delay":0.2}"="">Branches</h6>
-                </div>
-                <div class="overflow-hidden col col-lg-3" data-zanim-timeline="{}" data-zanim-trigger="scroll">
-                  <div class="fs-3 fs-lg-4 mb-0 fw-bold text-white mt-lg-5 mt-3 lh-xs" data-zanim-xs="{" delay":0.1}"="" data-countup="{" endvalue":100}"="">10270</div>
-                  <h6 class="fs-0 text-white" data-zanim-xs="{" delay":0.2}"="">Satisfied Clients</h6>
+        <section>
+          <div class="bg-holder overlay overlay-elixir" style="background-image:url(images/background-15.jpg);"></div>
+          <!--/.bg-holder-->
+          <div class="container">
+            <div class="d-flex">
+              <span class="me-3"> <img src="images/checkmark.png" alt="checkmark" style="width: 55px"></span>
+              <div class="flex-1">
+                <h2 class="text-warning fs-3 fs-lg-4">Take the right step,<br><span class="text-white">do the big things.</span></h2>
+                <div class="row mt-4 pe-lg-10">
+                  <div class="overflow-hidden col-md-3" data-zanim-timeline="{}" data-zanim-trigger="scroll">
+                    <div class="fs-3 fs-lg-4 mb-0 fw-bold text-white mt-lg-5 mt-3 lh-xs" data-zanim-xs='{"delay":0.1}' data-countup='{"endvalue":15263}'>15263</div>
+                    <h6 class="fs-0 text-white" data-zanim-xs='{"delay":0.2}'>No of Loans </h6>
+                  </div>
+                  <div class="overflow-hidden col col-lg-3" data-zanim-timeline="{}" data-zanim-trigger="scroll">
+                    <div class="fs-3 fs-lg-4 mb-0 fw-bold text-white mt-lg-5 mt-3 lh-xs" data-zanim-xs='{"delay":0.1}' data-countup='{"endvalue":4}'>4</div>
+                    <h6 class="fs-0 text-white" data-zanim-xs='{"delay":0.2}'>No of years</h6>
+                  </div>
+                  <div class="w-100 d-flex d-lg-none"></div>
+                  <div class="overflow-hidden col-md-3" data-zanim-timeline="{}" data-zanim-trigger="scroll">
+                    <div class="fs-3 fs-lg-4 mb-0 fw-bold text-white mt-lg-5 mt-3 lh-xs" data-zanim-xs='{"delay":0.1}' data-countup='{"endvalue":1}'>1</div>
+                    <h6 class="fs-0 text-white" data-zanim-xs='{"delay":0.2}'>Branches</h6>
+                  </div>
+                  <div class="overflow-hidden col col-lg-3" data-zanim-timeline="{}" data-zanim-trigger="scroll">
+                    <div class="fs-3 fs-lg-4 mb-0 fw-bold text-white mt-lg-5 mt-3 lh-xs" data-zanim-xs='{"delay":0.1}' data-countup='{"endvalue":10270}'>10270</div>
+                    <h6 class="fs-0 text-white" data-zanim-xs='{"delay":0.2}'>Satisfied Clients</h6>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div><!-- end of .container-->
-      </section><!-- <section> close ============================-->
+          <!-- end of .container-->
+        </section>
+        <!-- <section> close ============================-->
       <!-- ============================================-->
 
 
@@ -543,6 +546,34 @@
       },
       effect: 'fade',
       speed: 300,
+    });
+    
+
+    document.addEventListener("DOMContentLoaded", function() {
+      // Function to animate count up
+      function animateCountUp(element, endValue) {
+        let startValue = 0;
+        let duration = 2000; // Animation duration in milliseconds
+        let increment = endValue / (duration / 16); // Increment per frame (16ms per frame for 60fps)
+        
+        let current = startValue;
+        let interval = setInterval(function() {
+          current += increment;
+          if (current >= endValue) {
+            current = endValue;
+            clearInterval(interval);
+          }
+          element.textContent = Math.floor(current); // Update the element's text
+        }, 16); // Update every 16ms (roughly 60fps)
+      }
+    
+      // Query all elements with the data-countup attribute
+      const countUpElements = document.querySelectorAll('[data-countup]');
+      
+      countUpElements.forEach(function(element) {
+        const endValue = parseInt(element.getAttribute('data-countup').match(/"endvalue":(\d+)/)[1], 10);
+        animateCountUp(element, endValue);
+      });
     });
     
   </script>
